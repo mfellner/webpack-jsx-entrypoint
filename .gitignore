@@ -26,7 +26,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
 ### Node ###
 # Logs
 logs
@@ -57,3 +56,5 @@ build/Release
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 
+### Project files ###
+dist/
