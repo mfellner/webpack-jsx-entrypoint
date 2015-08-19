@@ -2,8 +2,12 @@
   "name": "webpack-jsx-entrypoint",
   "version": "0.1.0",
   "author": "Maximilian Fellner",
+  "description": "A webpack static jsx demo.",
+  "license": "MIT",
+  "repository": "https://github.com/mfellner/webpack-jsx-entrypoint.git",
   "main": "src/index.jsx",
   "scripts": {
+    "postinstall": "node_modules/.bin/webpack",
     "webpack:watch": "node_modules/.bin/webpack --watch",
     "serve": "node_modules/.bin/browser-sync --config bs-config.js start",
     "sync": "node_modules/.bin/parallelshell 'npm run webpack:watch' 'npm run serve'"
@@ -15,6 +19,7 @@
     "browser-sync": "^2.8.2",
     "eslint": "^1.1.0",
     "file-loader": "^0.8.4",
+    "jquery": "^2.1.4",
     "react": "^0.13.3",
     "webpack": "^1.11.0"
   }

@@ -1,9 +1,10 @@
 import React from 'react'
-
-const Content = React.createFactory(require('./content.jsx'))
+import content from './content.jsx'
+import { init } from './main'
 
 class Index extends React.Component {
   render() {
+    const Content = React.createFactory(content)
     return (
       <html lang="en">
         <head>
@@ -13,6 +14,9 @@ class Index extends React.Component {
           <meta content="width=device-width, initial-scale=1" name="viewport"/>
           <title>Hello, world!</title>
           <link rel="icon" href={require('./favicon.ico')}/>
+          {this.props.styles.map((style, i) => {
+            return (<link key={i} rel="stylesheet" href={style}/>)
+          })}
         </head>
         <body>
           <main id="main" dangerouslySetInnerHTML={{
@@ -35,9 +39,9 @@ Index.defaultProps = {
   scripts: []
 }
 
-if (typeof window !== 'undefined' && typeof document !== 'undefined' && !window.isMounted) {
-  React.render(Content(), document.getElementById('main'));
-  window.isMounted = true;
+// If we're running in the browser, initialize the app.
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  init()
 }
 
 export default Index

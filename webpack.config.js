@@ -13,7 +13,8 @@ module.exports = {
     ],
   },
   externals: {
-    'react': 'React'
+    'react': 'React',
+    'jquery': 'jQuery'
   },
   module: {
     loaders: [{
@@ -21,15 +22,15 @@ module.exports = {
       exclude: /node_modules/,
       loader: 'babel?optional[]=runtime&stage=1',
     }, {
-      test: /\.ico$/,
+      test: /\.(ico|gif)$/,
       loader: 'file',
     }]
   },
   plugins: [
     new StaticJsxPlugin('bundle.js', {
-      scripts: [
-        'https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js'
-      ]
+      styles: ['https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css'],
+      scripts: ['https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js']
     })
   ]
 }
