@@ -680,7 +680,7 @@
 
 	      var tag = 'cat';
 	      var key = 'dc6zaTOxFJmzC';
-	      var url = 'http://api.giphy.com/v1/stickers/random?api_key=' + key + '&tag=' + tag;
+	      var url = 'https://api.giphy.com/v1/stickers/random?api_key=' + key + '&tag=' + tag;
 
 	      _jQuery2['default'].ajax({ url: url }).then(function (response) {
 	        _this.setState({
