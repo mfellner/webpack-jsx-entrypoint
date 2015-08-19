@@ -5,8 +5,8 @@ an entry point for a webpack build.
 
 ### Usage:
 
-  npm install
-  npm run serve
+    npm install
+    npm run serve
 
 ### References
 
