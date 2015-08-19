@@ -40,7 +40,7 @@ class Content extends React.Component {
 
     const tag = 'cat'
     const key = 'dc6zaTOxFJmzC'
-    const url = `http://api.giphy.com/v1/stickers/random?api_key=${key}&tag=${tag}`
+    const url = `https://api.giphy.com/v1/stickers/random?api_key=${key}&tag=${tag}`
 
     jquery.ajax({url: url}).then(response => {
       this.setState({
