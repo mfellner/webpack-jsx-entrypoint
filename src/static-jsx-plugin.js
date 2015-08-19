@@ -5,7 +5,7 @@ function StaticJsxPlugin(filename, props) {
   this.filename = filename;
   this.props = props || {};
   if (!this.props.scripts) this.props.scripts = [];
-  this.props.scripts.push('/' + path.basename(this.filename));
+  this.props.scripts.push(path.basename(this.filename));
 }
 
 StaticJsxPlugin.prototype.apply = function(compiler) {
