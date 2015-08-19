@@ -4,11 +4,17 @@ var React = require('react');
 function StaticJsxPlugin(filename, props) {
   this.filename = filename;
   this.props = props || {};
+  if (!this.props.scripts) this.props.scripts = [];
+  this.props.scripts.push('/' + path.basename(this.filename));
 }
 
 StaticJsxPlugin.prototype.apply = function(compiler) {
 
   compiler.plugin('emit', function(compiler, done) {
+    if (compiler.errors && compiler.errors.length) {
+      return done(compiler.errors[0])
+    }
+
     var asset = compiler.assets[this.filename];
     if (!asset) {
       return done(new Error('File not found: "' + this.filename + '"'));
@@ -23,9 +29,6 @@ StaticJsxPlugin.prototype.apply = function(compiler) {
     var source = 'module.exports =\n' + asset.source();
     var reactClass = requireFromString(source, this.filename, context);
     var Component = React.createFactory(reactClass);
-
-    if (!this.props.scripts) this.props.scripts = [];
-    this.props.scripts.push('/' + path.basename(this.filename));
 
     var element = Component(this.props);
     var html = React.renderToStaticMarkup(element);
